@@ -2,17 +2,27 @@ package org.restapi.crud.crud.model;
 
 public class crudmodel {
 	
+	private int id;
 	private String noticehead;
 	private String noticecontent;
 	
 	public crudmodel() {
 		
 	}
-	
-	public crudmodel(String noticehead,String noticecontent ) {
+
+	public crudmodel(int id, String noticehead, String noticecontent) {
 		super();
+		this.id = id;
 		this.noticehead = noticehead;
 		this.noticecontent = noticecontent;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getNoticehead() {
@@ -30,5 +40,6 @@ public class crudmodel {
 	public void setNoticecontent(String noticecontent) {
 		this.noticecontent = noticecontent;
 	}
-
+	
+	
 }
