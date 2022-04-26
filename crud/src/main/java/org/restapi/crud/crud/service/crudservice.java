@@ -30,12 +30,13 @@ public class crudservice {
   }
   
   public crudmodel insertNotice(crudmodel notice) {
-	  String insert = "insert into notice(header,content) values(?,?)";
+	  String insert = "insert into notice(Username,Account_number,cvv) values(?,?,?)";
 	  
 	  try {
 		  PreparedStatement ps = con.prepareStatement(insert);
-		  ps.setString(1,notice.getNoticehead());
-		  ps.setString(2,notice.getNoticecontent());
+		  ps.setString(1,notice.getUsername());
+		  ps.setString(2,notice.getAccount_number());
+		  ps.setString(3,notice.getcvv());
 		  
 		  ps.execute();
 	  }catch(Exception e) {
@@ -56,9 +57,9 @@ public class crudservice {
 	  while(rs.next()) {
 		  crudmodel model = new crudmodel();
 		  
-		  model.setNoticehead(rs.getString("header"));
-		  model.setNoticecontent(rs.getString("content"));
-		  
+		  model.setUsername(rs.getString("Username"));
+		  model.setAccount_number(rs.getString("Account_number"));
+		  model.setcvv(rs.getString("cvv"));
 		  data.add(model);
 		  
 	  }
@@ -78,8 +79,9 @@ public ArrayList<crudmodel> getnoticeById(int id) throws SQLException{
 	  while(rs.next()) {
 		  crudmodel model = new crudmodel();
 		  
-		  model.setNoticehead(rs.getString("header"));
-		  model.setNoticecontent(rs.getString("content"));
+		  model.setUsername(rs.getString("Username"));
+		  model.setAccount_number(rs.getString("Account_number"));
+		  model.setcvv(rs.getString("cvv"));
 		  data.add(model);
 		  
 	  }
@@ -93,8 +95,9 @@ public crudmodel updateNotice(crudmodel notice) {
 	  try {
 		  PreparedStatement ps = con.prepareStatement(update);
 		  
-		  ps.setString(1,notice.getNoticehead());
-		  ps.setString(2,notice.getNoticecontent());
+		  ps.setString(1,notice.getUsername());
+		  ps.setString(2,notice.getAccount_number());
+		  ps.setString(2,notice.getcvv());
 		  ps.setInt(3, notice.getId());
 		  
 		  ps.executeUpdate();
